@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -137,22 +137,25 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-# 扩展django自带的user model，添加字段
+"""
+    注：Django 用户模型类是通过全局配置项 AUTH_USER_MODEL 决定的，
+    而我们重写了用户模型类, 所以我们需要重新指定默认的用户模型类
+"""
 AUTH_USER_MODEL = 'app_users.UserProfile'
 
-# 分页的相关设置
+# 分页模块pure_pagination的相关设置
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 6,
     'MARGIN_PAGES_DISPLAYED': 1,
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
 
-# 定义全局的变量
-per_page = 15  # 定义html页面中列表每页显示的数量
+# 定义系统中每页显示的资产、用户数量
+per_page = 5
 
 # 全局404配置，名称必须是handler404
-handler404 = 'users.views.page_not_found'
+handler404 = 'utils.page_not_found'
 
 # 全局500配置，名称必须是handler500
-handler500 = 'users.views.page_error'
+handler500 = 'utils.page_error'
 
