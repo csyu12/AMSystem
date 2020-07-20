@@ -31,9 +31,9 @@
             </div>
             <div class="form-list">
                 <span>管理员</span>
-                <select name="isadmin">
-                    <option value="1" {% ifequal user.isadmin '1' %}selected{% endifequal %}>是</option>
-                    <option value="0" {% ifequal user.isadmin '0' %}selected{% endifequal %}>否</option>
+                <select name="is_admin">
+                    <option value="1" {% ifequal user.is_admin '1' %}selected{% endifequal %}>是</option>
+                    <option value="0" {% ifequal user.is_admin '0' %}selected{% endifequal %}>否</option>
                 </select>
             </div>
             <div class="form-list">

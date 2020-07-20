@@ -14,7 +14,7 @@
                 </button>
             </form>
         </div>
-        {% if request.user.isadmin == '1' or request.user.is_superuser == 1 %}
+        {% if request.user.is_admin == '1' or request.user.is_superuser == 1 %}
             <button class="button-insert" id="btn_add">添加资产</button>
             <button class="button-insert" id="btn_export_list">导出列表</button>
         {% endif %}
@@ -41,7 +41,7 @@
                     <tr>
 {#                        <td>{{ forloop.counter|add:start }}</td>#}
                         <td>{{ server.id }}</td>
-                        {% if request.user.isadmin == '1' or request.user.is_superuser == 1 %}
+                        {% if request.user.is_admin == '1' or request.user.is_superuser == 1 %}
                             <td><a href="{% url 'app_servers:server_detail' server.id %}">{{ server.zctype }}</a></td>
                         {% else %}
                             <td>{{ server.zctype }}</td>
