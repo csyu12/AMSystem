@@ -52,7 +52,7 @@ class ServerHis(models.Model):
     undernet = models.CharField(max_length=10, verbose_name='所在网络')
     guartime = models.CharField(max_length=50, verbose_name='保修期', blank=True)
     comment = models.CharField(max_length=300, verbose_name='备注', blank=True)
-    modify_time = models.DateTimeField(default=datetime.now().strftime('%Y-%m-%d %H:%M:%S'), verbose_name='修改时间')
+    modify_time = models.DateTimeField(default=datetime.now(), verbose_name='修改时间')
 
     class Meta:
         verbose_name = '资产历史表'
