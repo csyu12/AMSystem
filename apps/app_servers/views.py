@@ -7,7 +7,7 @@ from pure_pagination import Paginator, PageNotAnInteger
 from apps.app_servers.models import Server, ServerType, ServerHis
 from apps.app_servers.forms import ServerForm, ServerTypeForm
 from apps.app_users.models import UserOperateLog, UserProfile
-from AMSystem.settings import per_page
+from AMWebsit.settings import per_page
 from apps.utils.mixin_utils import LoginRequiredMixin
 import csv
 
