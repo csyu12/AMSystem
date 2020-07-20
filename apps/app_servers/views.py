@@ -21,7 +21,7 @@ class IndexView(LoginRequiredMixin, View):
         return render(request, 'servers/index.html', {'zctype_groups': zctype_groups, 'total': total})
 
 
-# 资产列表
+# 资产列表预览
 class ServerListView(LoginRequiredMixin, View):
     def get(self, request):
         search = request.GET.get('search')
@@ -57,7 +57,7 @@ class ServerListView(LoginRequiredMixin, View):
         return render(request, 'servers/server_list.html', {'p_servers': p_servers, 'start': start, 'search': search})
 
 
-# 资产添加
+# 添加资产
 class ServerAddView(LoginRequiredMixin, View):
     def get(self, request):
         users = UserProfile.objects.filter(is_superuser=0, is_staff='1')
@@ -106,7 +106,7 @@ class ServerAddView(LoginRequiredMixin, View):
             })
 
 
-# 资产详情
+# 资产详情页
 class ServerDetailView(LoginRequiredMixin, View):
     def get(self, request, server_id):
         server = Server.objects.filter(id=server_id).first()
@@ -127,7 +127,7 @@ class ServerDetailView(LoginRequiredMixin, View):
                                                               'p_server_hiss': p_server_hiss, 'start': start})
 
 
-# 资产修改
+# 修改资产信息
 class ServerModifyView(LoginRequiredMixin, View):
     def post(self, request):
         server_id = int(request.POST.get('server_id'))
@@ -170,7 +170,7 @@ class ServerModifyView(LoginRequiredMixin, View):
                                                                   'msg': '输入错误！', 'server_form': server_form})
 
 
-# 资产删除
+# 删除资产信息
 class ServerDeleteView(LoginRequiredMixin, View):
     def get(self, request, server_id):
         server = Server.objects.get(id=server_id)
@@ -211,7 +211,7 @@ def create_excel(columns, content, file_name):
     return response
 
 
-# 资产列表导出
+# 资产信息导出
 class ServerExportView(LoginRequiredMixin, View):
     def get(self, request):
         search = request.GET.get('search')
@@ -239,7 +239,7 @@ class TypeListView(LoginRequiredMixin, View):
         return render(request, 'servers/type_list.html', {'server_types': server_types})
 
 
-# 资产类型添加
+# 添加资产类型
 class TypeAddView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'servers/type_add.html', {})
@@ -261,14 +261,14 @@ class TypeAddView(LoginRequiredMixin, View):
             return render(request, 'servers/type_add.html', {'msg': '输入错误！', 'servertype_form': servertype_form})
 
 
-# 资产类型详情
+# 资产类型详情页
 class TypeDetailView(LoginRequiredMixin, View):
     def get(self, request, type_id):
         server_type = ServerType.objects.get(id=type_id)
         return render(request, 'servers/type_detail.html', {'server_type': server_type})
 
 
-# 资产类型修改
+# 修改资产类型
 class TypeModifyView(LoginRequiredMixin, View):
     def post(self, request):
         type_id = int(request.POST.get('type_id'))
