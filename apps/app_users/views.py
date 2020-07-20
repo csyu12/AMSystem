@@ -9,7 +9,7 @@ from pure_pagination import Paginator, PageNotAnInteger
 from apps.app_users.models import UserProfile, UserOperateLog
 from apps.app_users.forms import LoginForm, UserPwdModifyForm, UserInfoForm
 from apps.utils.mixin_utils import LoginRequiredMixin
-from AMSystem.settings import per_page
+from AMWebsit.settings import per_page
 import csv
 
 # 定义普通用户初始密码
