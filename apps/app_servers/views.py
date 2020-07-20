@@ -1,21 +1,18 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.views.generic.base import View
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.db.models import Q, Count
 from pure_pagination import Paginator, PageNotAnInteger
-import csv
-
 from apps.app_servers.models import Server, ServerType, ServerHis
 from apps.app_servers.forms import ServerForm, ServerTypeForm
 from apps.app_users.models import UserOperateLog, UserProfile
 from AMSystem.settings import per_page
 from apps.utils.mixin_utils import LoginRequiredMixin
+import csv
 
 
-# 定义首页视图
+# 首页，展示资产类型、每个类型的数量、资产数量合计
 class IndexView(LoginRequiredMixin, View):
     def get(self, request):
         total = Server.objects.count()
@@ -197,6 +194,23 @@ class ServerDeleteView(LoginRequiredMixin, View):
         return HttpResponseRedirect((reverse('app_servers:server_list')))
 
 
+# csv导出函数
+def create_excel(columns, content, file_name):
+    file_name = file_name + '.csv'
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=' + file_name
+    response.charset = 'gbk'
+
+    # 写入csv文件，注意：列名和值的位置要一一匹配
+    csv_wr = csv.writer(response)
+    csv_wr.writerow(columns)
+    for i in content:
+        csv_wr.writerow([i['id'], i['zctype__zctype'], i['ipaddress'], i['description'],
+                         i['brand'], i['zcmodel'], i['zcnumber'], i['zcpz'],
+                         i['owner__username'], i['undernet'], i['guartime'], i['comment']])
+    return response
+
+
 # 资产列表导出
 class ServerExportView(LoginRequiredMixin, View):
     def get(self, request):
@@ -214,22 +228,8 @@ class ServerExportView(LoginRequiredMixin, View):
                                  'zcpz', 'owner__username', 'undernet', 'guartime', 'comment')
         colnames = ['序号', '资产类型', 'IP地址', '功能描述', '设备品牌', '设备型号', '设备序号', '设备配置',
                     '管理人员', '所在网络', '保修期', '备注']
-        response = create_excel(colnames, servers, 'zcgl')
+        response = create_excel(colnames, servers, 'Assets')
         return response
-
-
-def create_excel(columns, content, file_name):
-    """创建导出csv的函数"""
-    file_name = file_name + '.csv'
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=' + file_name
-    response.charset = 'gbk'
-    writer = csv.writer(response)
-    writer.writerow(columns)
-    for i in content:
-        writer.writerow([i['id'], i['zctype__zctype'], i['ipaddress'], i['description'], i['brand'], i['zcmodel'],
-                         i['zcnumber'], i['zcpz'], i['owner__username'], i['undernet'], i['guartime'], i['comment']])
-    return response
 
 
 # 资产类型列表
