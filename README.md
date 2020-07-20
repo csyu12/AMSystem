@@ -1,4 +1,4 @@
-#  Asset Management
+#  Asset Management Website
 
 > 一个基于Python3.7 + Django 3.0.8 制作的 “资产内部管理系统“
 
