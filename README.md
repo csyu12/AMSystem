@@ -35,7 +35,7 @@
     ```python
     pip install -r requirements.txt
     # 建议创建虚拟环境，在虚拟环境下安装本项目依赖，以免污染本地包
-```
+    ```
     
  3. 创建MySQL数据库（根据实际使用的数据库进行配置，不必照本宣科）
 
@@ -72,7 +72,7 @@
     ```python
     python3 manage.py createsuperuser
     # 按要求输入用户名、邮箱（格式要合法）、密码
-```
+    ```
     
  5. 运行服务器
 
