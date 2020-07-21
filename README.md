@@ -88,7 +88,7 @@
 
     * 第二种方法：可以运行manage.py文件，修改配置，如下图。后续只需要运行manage.py即可
 
-     ![Image text](README_IMG/3.png)
+    ![Image text](README_IMG/3.png)
 
     ![Image text](README_IMG/manage.jpg)  
     
