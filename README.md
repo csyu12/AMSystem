@@ -22,7 +22,7 @@
 
 ------
 
-6. - ### 项目部署（Windows系统）
+### 项目部署（Windows系统）
 
  1. 下载项目
 
@@ -36,7 +36,7 @@
     pip install -r requirements.txt
     ```
 
-    建议创建虚拟环境，在虚拟环境下安装本项目依赖，以免污染本地包
+    > 建议创建虚拟环境，在虚拟环境下安装本项目依赖，以免污染本地包
 
  3. 创建MySQL数据库（根据实际使用的数据库进行配置，不必照本宣科）
 
@@ -46,7 +46,7 @@
     CREATE DATABASE `HRS` CHARSET UTF8;
     ```
 
-    在`AMWebsit/setting.py` 修改数据库配置，如下所示：
+    > 在`AMWebsit/setting.py` 修改数据库配置，如下所示：
 
     ```python
     DATABASES = {
@@ -74,7 +74,7 @@
     python3 manage.py createsuperuser
     ```
 
-    按要求输入用户名、邮箱（格式要合法）、密码
+    > 按要求输入用户名、邮箱（格式要合法）、密码
 
  5. 运行服务器
 
@@ -84,12 +84,11 @@
     python3 manage.py runserver
     ```
 
-    在浏览器打开 `http://127.0.0.1:8000/` 即可访问项目主页
+    > 在浏览器打开 `http://127.0.0.1:8000/` 即可访问项目主页
 
     * 第二种方法：可以运行manage.py文件，修改配置，如下图。后续只需要运行manage.py即可
 
     ![Image text](README_IMG/3.png)
-
     ![Image text](README_IMG/manage.jpg)  
     
  6. 进入后台
