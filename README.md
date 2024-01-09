@@ -1,8 +1,6 @@
 # Asset Management Website
+ 一个基于Python3.7 + Django 3.0.8 制作的 “资产内部管理网站“
 
-> 一个基于Python3.7 + Django 3.0.8 制作的 “资产内部管理网站“
-
-------
 
 ### IDE
 
@@ -27,9 +25,9 @@
 
  1. 下载项目
 
-    > 访问 https://github.com/csyu12/Asset-Management-Website 下载本项目源码解压
-
-    > 也可以通过配置PyCharm环境直接Git克隆
+    ```python
+    下载本项目源码进行解压，或者通过配置PyCharm环境直接Git克隆
+    ```
 
  2. 安装项目依赖
 
@@ -44,6 +42,7 @@
     # 在MySQL终端界面中执行如下命令，创建名为'HRS'数据库
     CREATE DATABASE `HRS` CHARSET UTF8;
     ```
+    ![image](README_IMG/gl6.png)
     ```python
     # 在源码`AMWebsit/setting.py` 修改数据库配置，如下所示（根据实际修改）
     DATABASES = {
@@ -81,17 +80,17 @@
     # 运行如下命令启动服务
     python manage.py runserver
     ```
-    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/833d495d-f0ad-4ea5-8ae3-777f143c0c1e)
+    ![image](README_IMG/gl5.png)
 
     > 第二种运行方式：修改'Run/Debug Configurations'，在'Script Path'栏目指定manage.py文件绝对路径，在'Parameters'栏目填写'runserver 80'，最终点击run箭头按钮即可，如下图
     
-    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/34ec03a8-70b3-4dfe-91c4-49ec47246635)
-    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/f07e6bb0-a09a-4ad7-bc70-ef218c703243)
-    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/8034f5fe-a354-4fc0-8cb5-679861080e36)
+    ![image](README_IMG/gl3.png)
+    ![image](README_IMG/gl2.png)
+    ![image](README_IMG/gl4.png)
 
  7. 进入后台
 
     > 启动成功后在浏览器输入`http://127.0.0.1:8000/`访问项目主页，并使用第4步创建的超级管理员账户进行登录即可
     
-    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/1928b608-1ee7-45b5-b0e0-40dfbb86865b)
+    ![image](README_IMG/gl1.png)
 
