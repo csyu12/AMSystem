@@ -10,7 +10,7 @@
 
 ### DataBase
 
-- MySQL：5.7版
+- MySQL：5.7.43
 
 ### 依赖环境
 
@@ -22,74 +22,72 @@
 
 ------
 
-### 项目部署（Windows系统）
+### 项目部署（本文是在Windows系统环境下调试）
 
  1. 下载项目
 
     > 访问 https://github.com/csyu12/Asset-Management-Website 下载本项目源码解压
 
-    > 也可以通过配置PyCharm环境直接Git
+    > 也可以通过配置PyCharm环境直接Git克隆
 
  2. 安装项目依赖
 
     ```python
-    pip install -r requirements.txt
     # 建议创建虚拟环境，在虚拟环境下安装本项目依赖，以免污染本地包
+    pip install -r requirements.txt
     ```
     
- 3. 创建MySQL数据库（根据实际使用的数据库进行配置，不必照本宣科）
-
-    > MySQL数据库中执行：
+ 3. 创建并配置数据库（根据实际使用的数据库进行配置，本文以MySQL为例）
 
     ```mysql
+    # 在MySQL终端界面中执行如下命令，创建名为'HRS'数据库
     CREATE DATABASE `HRS` CHARSET UTF8;
     ```
-
-    > 在`AMWebsit/setting.py` 修改数据库配置，如下所示：
-
     ```python
+    # 在源码`AMWebsit/setting.py` 修改数据库配置，如下所示（根据实际修改）
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'HOST': 'localhost',
             'PORT': '3306',
-            'NAME': 'AM',
+            'NAME': 'HRS',
             'USER': 'root',
             'PASSWORD': '123456',
         }
     }
     ```
-
-    > 在终端下执行:
-
     ```python
-    python3 manage.py makemigrations
-    python3 manage.py migrate
+    # 在manage.py目录下执行
+    # 记录所有关于modes.py的改动，在app_xx目录下自动建立migrations目录，最终生成00xx_initial.py
+    python manage.py makemigrations
+    
+    # 针对生成的00xx_initial.py内容更新数据库，比如创建数据表、增加修改字段属性等
+    python manage.py migrate
     ```
 
- 4. 创建后台管理员账户
+ 4. 创建后台超级管理员账户
 
     ```python
-    python3 manage.py createsuperuser
     # 按要求输入用户名、邮箱（格式要合法）、密码
+    python manage.py createsuperuser
     ```
     
- 5. 运行服务器
+ 5. 运行服务
 
-    > 在终端中输入
+    > 第一种运行方式：通过命令行启动
 
     ```python
-    python3 manage.py runserver
-    # 在浏览器打开 http://127.0.0.1:8000/ 即可访问项目主页
+    # 运行如下命令启动服务
+    python manage.py runserver
     ```
-
-    > 也可以运行manage.py文件，修改配置，如下图。后续只需要运行manage.py即可
+    > 第二种运行方式：运行manage.py文件，修改配置，如下图。后续只需要运行manage.py即可
 
     ![Image text](README_IMG/3.png)
     ![Image text](README_IMG/manage.jpg)  
 
  6. 进入后台
 
-    > 在浏览器输入`http://127.0.0.1:8000/admin`，使用第5步创建的超级管理员账户进行登录
+    > 启动成功后在浏览器输入`http://127.0.0.1:8000/admin`访问项目主页，并使用第4步创建的超级管理员账户进行登录即可
+    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/1928b608-1ee7-45b5-b0e0-40dfbb86865b)
 
     > 注：建议使用Django后台添加测试数据，比较方便
