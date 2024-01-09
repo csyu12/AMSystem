@@ -19,7 +19,8 @@
 - django-pure-pagination：0.3.0
 - mysqlclient：2.0.1
 
-
+备注：建议通过Django后台添加测试数据，比较方便
+ 
 ------
 
 ### 项目部署（本文是在Windows系统环境下调试）
@@ -80,14 +81,17 @@
     # 运行如下命令启动服务
     python manage.py runserver
     ```
-    > 第二种运行方式：运行manage.py文件，修改配置，如下图。后续只需要运行manage.py即可
+    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/833d495d-f0ad-4ea5-8ae3-777f143c0c1e)
 
-    ![Image text](README_IMG/3.png)
-    ![Image text](README_IMG/manage.jpg)  
+    > 第二种运行方式：修改'Run/Debug Configurations'，在'Script Path'栏目指定manage.py文件绝对路径，在'Parameters'栏目填写'runserver 80'，最终点击run箭头按钮即可，如下图
+    
+    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/34ec03a8-70b3-4dfe-91c4-49ec47246635)
+    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/f07e6bb0-a09a-4ad7-bc70-ef218c703243)
+    ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/8034f5fe-a354-4fc0-8cb5-679861080e36)
 
- 6. 进入后台
+ 7. 进入后台
 
-    > 启动成功后在浏览器输入`http://127.0.0.1:8000/admin`访问项目主页，并使用第4步创建的超级管理员账户进行登录即可
+    > 启动成功后在浏览器输入`http://127.0.0.1:8000/`访问项目主页，并使用第4步创建的超级管理员账户进行登录即可
+    
     ![image](https://github.com/csyu12/Asset-Management-Website/assets/67434922/1928b608-1ee7-45b5-b0e0-40dfbb86865b)
 
-    > 注：建议使用Django后台添加测试数据，比较方便
